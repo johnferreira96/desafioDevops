@@ -29,8 +29,8 @@ jobs:
       env:
         DOCKER_PASSWORD: ${{ secrets.USER }}
         DOCKER_USERNAME: ${{ secrets.PASSWD }}
-        run: |
-          echo "$PASSWD" | docker login -u "$USER" --password-stdin
+      run: |
+        echo "$PASSWD" | docker login -u "$USER" --password-stdin
 
     - name: Build Docker image
       run: docker-compose build
