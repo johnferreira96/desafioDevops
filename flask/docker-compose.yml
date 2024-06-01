@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    command: python -m flask run --host=0.0.0.0
+
+  test:
+    build: .
+    command: pytest --tb=short --maxfail=1
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONPATH=/app
+    depends_on:
+      - web
